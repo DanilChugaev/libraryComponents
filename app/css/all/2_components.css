@@ -211,6 +211,24 @@
       .container__preview label:hover {
         color: #fff;
         background-color: #3EB2CF; }
+    .container__preview .droppable {
+      width: 100%;
+      height: 100px;
+      background-color: #00CC71;
+      color: #fff;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s; }
+      .container__preview .droppable span {
+        margin: auto; }
+      .container__preview .droppable.dragover, .container__preview .droppable:hover {
+        outline: 2px dashed #fff;
+        outline-offset: -10px;
+        background-color: #1e8859;
+        cursor: pointer; }
 
 .preview {
   display: -webkit-box;

@@ -5,7 +5,8 @@
         formData        = new FormData(),   /*объект формДата для отправки файлов на сервер*/
         form            = document.getElementById('formWithFile'), /*форма*/
         uploadButton    = document.getElementById('upload-button'), /*кнопка загрузки*/
-        xhr             = new XMLHttpRequest();
+        xhr             = new XMLHttpRequest(),
+        droppable       = document.getElementById('droppable');
 
     /*событие загрузки файлов*/
     uploadElements.addEventListener("change", function(e) {
@@ -89,5 +90,74 @@
             case 2:  return name.replace(/"/g, '&#34;'); break;
         }
     }
+
+    /*следующая часть код отвечает за drag-and-drop функциональность*/
+    function triggerCallback(e, callback) {
+        if(!callback || typeof callback !== 'function') {
+            return;
+        }
+        var files;
+        if(e.dataTransfer) {
+            files = e.dataTransfer.files;
+        } else if(e.target) {
+            files = e.target.files;
+        }
+        callback.call(null, files);
+    }
+
+    function makeDroppable(element, callback) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('multiple', true);
+        input.style.display = 'none';
+
+
+
+        input.addEventListener('change', function(e) {
+            triggerCallback(e, callback);
+        });
+        element.appendChild(input);
+
+        element.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            element.classList.add('dragover');
+        });
+
+        element.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            element.classList.remove('dragover');
+        });
+
+        element.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            element.classList.remove('dragover');
+            triggerCallback(e, callback);
+        });
+
+        element.addEventListener('click', function() {
+            input.value = null;
+            input.click();
+        });
+    }
+    window.makeDroppable = makeDroppable;
+
+    makeDroppable(droppable, function(files) {
+        var arr = [].slice.call(files);
+
+        if(arr.length == 0)
+            return;
+
+        arr.forEach(function (item, i, arr) {
+            preview(item);
+
+            var newName = rename(item.name,1);
+
+            formData.append('file[' + newName + ']', item, newName);
+
+        });
+    });
 })();
 
