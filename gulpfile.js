@@ -78,12 +78,12 @@ gulp.task('img', function() {
 	.pipe(gulp.dest('dist/image'));
 });
 
-gulp.task('watch', ['browser-sync', 'css-min', 'js-min'], function() {
+gulp.task('watch', ['browser-sync', 'css-min'], function() {
     gulp.watch('app/css/preloader.css', browserSync.reload);
     gulp.watch('app/scss/*.scss', ['css-min']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/scroll-to.js', browserSync.reload);
-    gulp.watch('app/js/custom/*.js', ['js-min']);
+    gulp.watch('app/js/custom/*.js', browserSync.reload);
 });
 
 gulp.task('build', ['clean', 'img', 'css-min', 'libs','js-min'], function() {
