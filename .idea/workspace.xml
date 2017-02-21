@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c66cbfa4-34b2-4123-af7e-ede17e5c371f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/all/2_components.css" afterPath="$PROJECT_DIR$/app/css/all/2_components.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/styles.min.css" afterPath="$PROJECT_DIR$/app/css/styles.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/custom/preview.js" afterPath="$PROJECT_DIR$/app/js/custom/preview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/scripts.min.js" afterPath="$PROJECT_DIR$/app/js/scripts.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scss/2_components.scss" afterPath="$PROJECT_DIR$/app/scss/2_components.scss" />
-    </list>
+    <list default="true" id="c66cbfa4-34b2-4123-af7e-ede17e5c371f" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -324,12 +316,12 @@
       <updated>1487253127621</updated>
       <workItem from="1487253129548" duration="1351000" />
       <workItem from="1487304942621" duration="5893000" />
-      <workItem from="1487314562960" duration="6608000" />
+      <workItem from="1487314562960" duration="6932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13852000" />
+    <option name="totallyTimeSpent" value="14176000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -341,7 +333,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="30" y="136" width="1880" height="900" extended-state="1" />
+    <frame x="30" y="136" width="1880" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
