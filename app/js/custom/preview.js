@@ -62,7 +62,8 @@
 
     /*показ превью и наименования файлов*/
     function preview(file) {
-        var newName = rename(file.name,1);
+        var newName = rename(file.name,1),
+            type, documentImg;
 
         /*тут также можно сделать проверку на соответствие типу файла*/
         if ( file.type.match(/image.*/) ) {
@@ -77,9 +78,39 @@
 
             reader.readAsDataURL(file);
         }
+        else
+        if ( type = file.name.match(/\.(?:docx|doc|odt|txt|rtf|pdf|ppt|pptx|xlsx|xls|sxc|accdb|mdb|html|php|xml)$/i) ) {
+            type = type[0].toLowerCase().slice(1);
+        }
+
+        /*если загружается какой-то документ то выводим превью соответствуюшего типа документа*/
+        if ( type ) {
+            switch(type) {
+                case "docx":
+                case "doc":
+                case "odt":
+                    type = "docx"; break;
+                case "xlsx":
+                case "xls":
+                    type = "xlsx"; break;
+                case "pptx":
+                case "ppt":
+                    type = "pptx"; break;
+                case "accdb":
+                case "mdb":
+                    type = "accdb"; break;
+            }
+
+            documentImg = "<img src='image/" + type + ".jpg' name='document' alt='" + type + " file'> ";
+        } else {
+            documentImg = "";
+        }
+
+        /*можно еще сделать проверку на наличие указанного файла*/
+        /*если данного файла нету, то можно выводить картинку заглушку*/
 
         var li = document.createElement('li');
-        li.innerHTML = "<span>" + newName + "</span>" + " " + "<button type='button' name='" + newName + "' onclick='deleteFiles(this)'>X</button>";
+        li.innerHTML = documentImg + "<span>" + newName + "</span>" + " " + "<button type='button' name='" + newName + "' onclick='deleteFiles(this)'>X</button>";
         previewText.appendChild(li);
     }
 
