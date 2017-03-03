@@ -332,3 +332,35 @@
 		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAxCAMAAACrgNoQAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAADREA/4AAAAFnRSTlMABkyDhIDu/fztd/QCXhsdLsbb3L/6rPFovgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACESURBVEjH7ZY5EoAgEARHEVC88ID/P1WfsB1YRWDH0wl7sOp6N5hxfSdfEV6BCUGRCVEjE8YWBZavVRPLT0ozyc9Jy+oB66IfG9tuZnvj+TgvM+eRdbPWuFWYUFocoO8F/Eq4DrjSuJd+LODNh3cr3t4s//4PDQ4QFvAlEJgQ+DVD76UHrYiEiVK9RFwAAAAASUVORK5CYII=');
 	}	
 }
+
+.counter-reset {
+	display: inline-block;
+	font-size: 15px;
+	color: #eee;
+	font-weight: bold;
+
+	.number-wrapper {
+		margin: 0;
+		position: relative;
+		transform: translateY(0);
+		&:not(:last-child)::after {
+			content: ": ";
+			color: black;
+		}
+	}
+	.number {
+		display: inline-block;
+		background: #797979;
+		color: #fff;
+		padding: 0 5px;
+		margin: 0 5px;
+		border-radius:3px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		font-weight: 600;
+	}
+	span {
+		display: inline-block;
+	}
+}
