@@ -1,9 +1,6 @@
 (function() {
     /*
-     *    счетчик товаров
-     *    <input type="button" class="less-amount">
-     *    <input type="text" class="amount-good" value='1'>
-     *    <input type="button" class="more-amount">
+     *    счетчик
      */
     var amount = document.getElementsByClassName('amount-good'),
         lessAmount = document.getElementsByClassName('less-amount'),
@@ -11,7 +8,7 @@
 
     for(var i = 0; i < amount.length; i++) {
         amount[i].addEventListener('keydown', function(event) {
-            if( (isNaN(event.key) || event.key == " ") && event.key != "Backspace" ) {
+            if( (isNaN(event.key) || event.key == " ") && event.key != "Backspace" && event.key != "Delete" && event.key != "ArrowLeft" && event.key != "ArrowRight") {
                 event.preventDefault();
             }
         });
