@@ -26,7 +26,19 @@ gulp.task('scss', function() {
             browsers: ['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
             cascade: true
         }))
-        .pipe(gulp.dest('app/css/all'));
+        .pipe(gulp.dest('app/css/all'))
+        .pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('page__scss', function() {
+    return gulp.src('app/scss/page/*.scss')
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
+            cascade: true
+        }))
+        .pipe(gulp.dest('app/css/page'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('libs', function() {
@@ -78,12 +90,14 @@ gulp.task('img', function() {
 	.pipe(gulp.dest('dist/image'));
 });
 
-gulp.task('watch', ['browser-sync', 'css-min'], function() {
+gulp.task('watch', ['browser-sync', 'scss', 'page__scss'], function() {
     gulp.watch('app/css/preloader.css', browserSync.reload);
-    gulp.watch('app/scss/*.scss', ['css-min']);
+    gulp.watch('app/scss/*.scss', ['scss']);
+    gulp.watch('app/scss/page/*.scss', ['page__scss']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/scroll-to.js', browserSync.reload);
     gulp.watch('app/js/custom/*.js', browserSync.reload);
+    gulp.watch('app/js/page/*.js', browserSync.reload);
 });
 
 gulp.task('build', ['clean', 'img', 'css-min', 'libs','js-min'], function() {
