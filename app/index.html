@@ -37,17 +37,32 @@
     <!-- -------------------------------------------------------------------------------- -->
 
     <header id="top">
-        Component library
+        <div class="lang-select">
+            <label id="js-lang-select" class="lang-select__label">
+                <span class="lang-select__text">Rus</span>
+                <input type="checkbox" name="lang-select" class="lang-select__input" value="en" checked>
+                <span class="lang-select__text">Eng</span>
+            </label>
+        </div>
+
+        <span data-lang="ru">Библиотека компонентов</span>
+        <span data-lang="en">Component library</span>
     </header>
 
     <main>
         <ul class="list-components">
             <li>
-                <a href="download-files.html" class="download-files">
-                    <span>Загрузка файлов</span>
+                <a href="download-files.html">
+                    <span data-lang="ru">Загрузка файлов</span>
+                    <span data-lang="en">Download files</span>
                 </a>
             </li>
-            <li><a href="">2</a></li>
+            <li>
+                <a href="">
+                    <span data-lang="ru">Всплывашки и всплывающие окна</span>
+                    <span data-lang="en">Pop-ups</span>
+                </a>
+            </li>
             <li><a href="">3</a></li>
             <li><a href="">4</a></li>
             <li><a href="">5</a></li>
@@ -71,11 +86,48 @@
     <script src="js/custom/scroll-to.js"></script>
 
     <!-- -------------------------------------------------------------------------------- -->
-    <!--После загрузки всех всего DOM дерева со стилями, прелоадер скрывается-->
     <script>
         (function(){
-            document.addEventListener('DOMContentLoaded', function(){
+            let lang = document.getElementById('js-lang-select'),
+                langChild = lang.getElementsByTagName('input'),
+                html = document.getElementsByTagName('html')[0];
 
+
+            lang.addEventListener('click', function(event){
+                /*
+                 *   Установка языкового атрибута
+                 *   Сохранение данных в localStorage
+                 **/
+                if(event.target.value == 'ru') {
+                    html.setAttribute('lang', 'en');
+                    localStorage.setItem('lang', 'en');
+                    langChild[0].value = 'en';
+                } else if(event.target.value == 'en') {
+                    html.setAttribute('lang', 'ru');
+                    localStorage.setItem('lang', 'ru');
+                    langChild[0].value = 'ru';
+                }
+            });
+
+            if (localStorage.getItem('lang')) {
+                /*
+                 *   Получение данных из localStorage и установка языкового атрибута
+                 **/
+                html.setAttribute('lang', localStorage.getItem('lang'));
+                langChild[0].value = localStorage.getItem('lang');
+
+                if(langChild[0].value == 'en') {
+                    langChild[0].checked = true;
+                } else {
+                    langChild[0].checked = false;
+                }
+            }
+        })();
+        /*
+        *   После загрузки всех всего DOM дерева со стилями, прелоадер скрывается
+        **/
+        (function(){
+            document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById('loader').classList.add('animation');
 
                 setTimeout(function () {
