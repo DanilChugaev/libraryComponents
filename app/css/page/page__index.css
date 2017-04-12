@@ -16,7 +16,6 @@ header {
   background: #58a;
   color: #fff; }
   header * {
-    font-family: 'Indie Flower', 'Bad Script', cursive;
     font-family: 'Indie Flower', 'Neucha', cursive; }
   header [data-lang] {
     font-size: 70px;
@@ -34,8 +33,6 @@ header {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 1300px;
-  margin: 0 auto;
   padding: 20px 0; }
   .list-components li {
     list-style: none;

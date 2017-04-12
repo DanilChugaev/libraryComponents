@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Библиотека компонентов</title>
+    <title>Main page</title>
+
+    <!--На страницах будут подключаться скрипты и стили относящиеся к данной странице-->
+    <!--Также будут общие файлы-->
 
     <!-- -------------------------------------------------------------------------------- -->
-    <!--
-        Здесь указываются фавиконы для различных устройств
-    -->
+    <!--Здесь указываются фавиконы для различных устройств-->
     <link rel="shortcut icon" href="ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="256x256" href="ico/256-256.png">
     <link rel="apple-touch-icon-precomposed" sizes="128x128" href="ico/128-128.png">
@@ -19,249 +19,83 @@
     <link rel="apple-touch-icon-precomposed" href="ico/favicon.png">
     <!-- -------------------------------------------------------------------------------- -->
 
-    <!-- -------------------------------------------------------------------------------- -->
-    <!--
-        Необходимо написать прелоадер на css
-    -->
+    <!--Стили для прелоадера, он необходим чтобы пользователь не видел "голый" текст без стилей-->
     <link rel="stylesheet" href="css/preloader.css">
-    <!-- -------------------------------------------------------------------------------- -->
 </head>
-
 <body>
-    <!-- Шапка -->
-    <header id="top">
-        <section class="main-phone">
-            <span class="sh-icon sh-icon__phone"></span>
-            <a href="callto:телефон">
-                <h1>Телефон</h1>
-            </a>
-        </section>
+    <!-- -------------------------------------------------------------------------------- -->
+    <!--Изначально прелоадер скрыт, чтобы в случае если js не работает в браузере,
+        у пользователя бесконечно прелоадер не крутился-->
+    <div id="loader" class="loader">
+        <div class="loader-img"></div>
+    </div>
+    <script>
+        (function(){
+            document.getElementById('loader').style.display = "block";
+        })();
+    </script>
+    <!-- -------------------------------------------------------------------------------- -->
 
-        <!-- -------------------------------------------------------------------------------- -->
-        <!--
-            простое навигационное меню, которое в мобильной версии превращается в гамбургер (при этом js не используется, а используется простой чекбокс)
-            в зависимости от длины этого меню, в стилях можно будет изменить ширину экрана при которой появляется гамбургер
-        -->
-        <input type="checkbox" id="hamburger" class="hamburger__input">
-        <label for="hamburger" class="hamburger__label"></label>
-
-        <nav>
-            <ul>
-                <li><a href="#container__link" class="scrolled">Ссылка на элемент</a></li>
-                <li><a href="#feedback" class="scrolled">Форма обратной связи</a></li>
-                <li><a href="#container__contacts" class="scrolled">Ссылка на элемент</a></li>
-            </ul>
-        </nav>
-        <!--
-            благодаря js-файлу scroll-to.js для плавного перемещения к любому объекту необходимо сделать несколько вещей:
-            * <a href="#идентификатор-элемента" class="scrolled">Ссылка на элемент</a> - это вид ссылки которая указывает на элемент
-            * <section id='идентификатор-элемента'>Элемент</section> - собственно сам элемент, к которому требуется перейти
-            данный способ удобен еще тем, что по умолчанию (даже если js-файл не подключится) браузер все равно переместит пользователя к элементу, но уже без анимации
-        -->
-        <!-- -------------------------------------------------------------------------------- -->
-
-    </header>
-    <!-- Главная -->
-    <main>
-        <!-- Контейнер с текстом-->
-        <section class="container">
-            <div>
-                <p>
-                    Основной класс контейнера - "container", располагается посередине, представляет собой flex-элемент.
-                </p>
-                <div id="CDT" class="counter-reset" data-time="2017/03/06 00:00:00"></div>
-            </div>
-
-            <!--счетчик на сайты (необходимо придумать анимацию)-->
-            <!--плюс добавить такую вещь, чтобы перерисовывалась только часть, которая изменяется-->
-        </section>
-
-        <!-- -------------------------------------------------------------------------------- -->
-        <!--
-            Контейнер с обратной связью
-            Содержит элементы с проверкой форм
-            Позже можно написать оповещение о правильном заполнении форм (наподобие ремонтника, взять оттуда)
-        -->
-        <form id="feedback" class="container container__feedback">
-            <h2>Форма обратной связи</h2>
-            <div>
-                <label>
-                    <span>Фамилия:</span>
-                    <input required type="text" name="name">
-                </label>
-                <label>
-                    <span>Имя:</span>
-                    <input required type="text" name="name">
-                </label>
-            </div>
-            <div>
-                <label>
-                    <span>E-mail:</span>
-                    <input required type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" name="email">
-                </label>
-                <label>
-                    <span>Телефон:</span>
-                    <span class="feedback__country-tel" name="country-tel">+7</span>
-                    <input required type="tel" name="tel" pattern="(\+?\d[- .]*){7,13}" title="Международный, государственный или местный телефонный номер">
-                </label>
-            </div>
-            <div>
-                <label class="feedback feedback__comment">
-                    <span>Введите сообщение:</span>
-                    <textarea required rows="5"></textarea>
-                </label>
-            </div>
-            <div>
-                <button type="submit" class="feedback__button">Отправить</button>
-            </div>
-        </form>
-        <!-- -------------------------------------------------------------------------------- -->
-
-
-        <!-- -------------------------------------------------------------------------------- -->
-        <!--
-            Для получения превью изображений при их загрузке
-            а также списка файлов загруженных
-        -->
-        <form id="formWithFile" method="POST" action="handler.php" class="container container__preview">
-            <p>Секция с загрузкой изображений и получения превью изображений,
-                а так-же списка загруженный файлов.
-                Скрипт позволяет загружать несколько файлов сразу.</p>
-            <label>Выбрать файл
-                <input id="upload" type="file" name="file[]" multiple/>
+    <header>
+        <div class="lang-select">
+            <label id="js-lang-select" class="lang-select__label">
+                <span class="lang-select__text">Rus</span>
+                <input type="checkbox" name="lang-select" class="lang-select__input" value="en" checked>
+                <span class="lang-select__text">Eng</span>
             </label>
-            <div id="droppable" class="droppable">
-                <span>Перетащите файлы сюда или кликните чтобы выбрать</span>
-            </div>
-            <div id="preview-img" class="preview preview__img"></div>
-            <ul id="preview-text" class="preview preview__file-name"></ul>
+        </div>
+    </header>
 
-            <button type="submit" id="upload-button">Загрузить на сервер</button>
-        </form>
-        <!-- -------------------------------------------------------------------------------- -->
-
-
-
-        <!-- Изображение с морем -->
-        <!--<section class="image">-->
-            <!--<img src="image/area.jpg" alt="Море" class="image__area">-->
-        <!--</section>-->
-        <!-- Ссылки на другие лендинги -->
-        <!--<section id="container__link" class="container container__link">-->
-            <!--<a href="http://shark.solar-studio.net/" class="link link__post" title="Перейти на сайт">-->
-                <!--<span class="sh-icon sh-icon__posting"></span>-->
-                <!--<h2>Расклейка</h2>-->
-                <!--<span>Нажмите чтобы посмотреть</span>-->
-            <!--</a>-->
-            <!--<a href="http://shark2.solar-studio.net/" class="link link__color" title="Перейти на сайт">-->
-                <!--<span class="sh-icon sh-icon__coloring"></span>-->
-                <!--<h2>Раскраска</h2>-->
-                <!--<span>Нажмите чтобы посмотреть</span>-->
-            <!--</a>-->
-        <!--</section>-->
-
-
-        <!-- Изображение с людьми -->
-        <!--<section class="image">-->
-            <!--<img src="image/people.jpg" alt="Море" class="image__people">-->
-        <!--</section>-->
-        <!-- Контейнер с текстом-->
+    <main>
         <section class="container">
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </section>
-        <!-- Контейнер с отзывом -->
-        <section class="container container__review container__review--one">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <img src="image/one-people.jpg" alt="Фото первого клиента">
-        </section>
-        <!-- Контейнер с текстом и изображением людей -->
-        <section class="container container__people-text">
-            <img src="image/people2.jpg" alt="Просто люди">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </section>
-        <!-- Контейнер с отзывом -->
-        <section class="container container__review">
-            <img src="image/two-people.jpg" alt="Фото второго клиента">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </section>
+            <ul>
+                <li>
+                    <a href="#privacyPolicy" class="open-modal">
+                        <span data-lang="ru">Политика конфиденциальности</span>
+                        <span data-lang="en">Privacy policy</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#secondWindow" class="open-modal">
+                        <span data-lang="ru">Второе окно</span>
+                        <span data-lang="en">Second window</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#thirdWindow" class="open-modal">
+                        <span data-lang="ru">Третье окно</span>
+                        <span data-lang="en">Third window</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#fourthWindow" class="open-modal">
+                        <span data-lang="ru">Четвертое окно</span>
+                        <span data-lang="en">Fourth window</span>
+                    </a>
+                </li>
+            </ul>
 
-        <!-- Контакты -->
-        <section id="container__contacts" class="container container__contacts">
-            <h2>Контакты</h2>
-            <div>
-                <span class="sh-icon sh-icon__geo"></span>
-                <span>Россия, Пермь, Нефтяников 27, оф. 31в</span>
-            </div>
-            <div>
-                <span class="sh-icon sh-icon__mobile"></span>
-                <a href="callto:89028051805">8-902-805-1-805</a>
-            </div>
-            <div>
-                <span class="sh-icon sh-icon__static-phone"></span>
-                <a href="callto:2266678">226-66-78</a>
-            </div>
-            <div>
-                <span class="sh-icon sh-icon__message"></span>
-                <a href="mailto:akula.320@yandex.ru">akula.320@yandex.ru</a>
-            </div>
         </section>
-
-        <!-- -------------------------------------------------------------------------------- -->
-        <!--
-            Карта Яндекса
-            Инициализируется с помощью map.js
-            Основная библиотека api-maps-yandex.js
-        -->
-        <section id="place" style="width:100%;height:450px;"></section>
-        <!-- -------------------------------------------------------------------------------- -->
 
     </main>
-    <!-- Подвал -->
-    <footer>
-        <section class="container container__footer">
-            <div class="container__copyright">
-                <a id="activate-modal" class="activate-modal">Политика конфиденциальности</a>
-                <span>© 2017, Все права защищены</span>
-            </div>
-            <div>
-                Разработано в <a href="http://solar-studio.net/">Solar Studio</a>
-            </div>
-        </section>
-    </footer>
 
     <!-- -------------------------------------------------------------------------------- -->
-    <!--
-        Стрелка возврата к шапке страницы
-        Появляется и исчезает с анимацией
-    -->
-    <a href="#top" id="arrow-to-top" class="sh-icon sh-icon__arrow-to-top scrolled"></a>
+    <!-- Стрелка возврата к шапке страницы -->
+    <a href="#top" id="arrow-to-top" class="arrow-to-top scrolled"></a>
     <!-- -------------------------------------------------------------------------------- -->
 
     <!-- -------------------------------------------------------------------------------- -->
     <!--
-        Модальное окно, использует минимум javasript-кода
+        Модальные окна, использует минимум javasript-кода
     -->
-    <div id="policy" class="modal">
+    <div id="privacyPolicy" class="modal">
         <div class="modal__body">
             <span class="modal__close">&times;</span>
             <p>
-              <b>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</b>
+                <b>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</b>
             </p>
             <br>
-            <div class="modal__content">     
+            <div class="modal__content">
                 <p>
                     <span>г. Пермь</span> <span>«2» февраля 2017 г.</span>
                 </p>
@@ -502,24 +336,64 @@
             </div>
         </div>
     </div>
+    <div id="secondWindow" class="modal">
+        <div class="modal__body">
+            <span class="modal__close">&times;</span>
+            <br>
+            <div class="modal__content">
+                <span data-lang="ru">Второе окно</span>
+                <span data-lang="en">Second window</span>
+            </div>
+        </div>
+    </div>
+    <div id="thirdWindow" class="modal">
+        <div class="modal__body">
+            <span class="modal__close">&times;</span>
+            <br>
+            <div class="modal__content">
+                <span data-lang="ru">Третье окно</span>
+                <span data-lang="en">Third window</span>
+            </div>
+        </div>
+    </div>
+    <div id="fourthWindow" class="modal">
+        <div class="modal__body">
+            <span class="modal__close">&times;</span>
+            <br>
+            <div class="modal__content">
+                <span data-lang="ru">Четвертое окно</span>
+                <span data-lang="en">Fourth window</span>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------- -->
+
+    <!-- -------------------------------------------------------------------------------- -->
+    <!--Область с подключаемыми файлами-->
+    <link rel="stylesheet" href="css/all/1_common.css">
+    <link rel="stylesheet" href="css/page/page__pop-ups.css">
+
+    <script src="js/custom/modal.js" defer></script>
+
+    <script src="js/custom/lang-select.js"></script>
     <!-- -------------------------------------------------------------------------------- -->
 
 
-    <link rel="stylesheet" href="css/styles.min.css">
+    <!-- -------------------------------------------------------------------------------- -->
+    <script>
+        /*
+         *   После загрузки всех всего DOM дерева со стилями, прелоадер скрывается
+         **/
+        (function(){
+            document.addEventListener('DOMContentLoaded', function(){
+                document.getElementById('loader').classList.add('animation');
 
-    <script src="js/libs/api-maps-yandex.js" defer></script>
-
-    <script src="js/custom/counter.js"></script>
-    <script src="js/custom/modal.js" defer></script>
-    <script src="js/custom/preview__v1.js" defer></script>
-    <script src="js/custom/scroll-to.js" defer></script>
-    <script src="js/custom/map.js" defer></script>
-
-    <!--
-        На продакшене подключаются минифицированные файлы
-    -->
-    <!--<script src="js/libs.min.js" defer></script>-->
-    <!--<script src="js/scripts.min.js" defer></script>-->
+                setTimeout(function () {
+                    document.getElementById('loader').style.display = "none";
+                }, 300);
+            })
+        })();
+    </script>
+    <!-- -------------------------------------------------------------------------------- -->
 </body>
-
 </html>

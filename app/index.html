@@ -50,7 +50,7 @@
     </header>
 
     <main>
-        <ul class="list-components">
+        <ul class="container list-components">
             <li>
                 <a href="download-files.html">
                     <span data-lang="ru">Загрузка файлов</span>
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="pop-ups.html">
                     <span data-lang="ru">Всплывашки и всплывающие окна</span>
                     <span data-lang="en">Pop-ups</span>
                 </a>
@@ -79,50 +79,20 @@
     <a href="#top" id="arrow-to-top" class="arrow-to-top scrolled"></a>
     <!-- -------------------------------------------------------------------------------- -->
 
+    <!-- -------------------------------------------------------------------------------- -->
+    <!--Область с подключаемыми файлами-->
     <link rel="stylesheet" href="css/all/1_common.css">
     <link rel="stylesheet" href="css/page/page__index.css">
 
-    <script src="js/page/page__index.js"></script>
-    <script src="js/custom/scroll-to.js"></script>
+    <script src="js/page/page__index.js" defer></script>
+    <script src="js/custom/scroll-to.js" defer></script>
+
+    <script src="js/custom/lang-select.js"></script>
+    <!-- -------------------------------------------------------------------------------- -->
+
 
     <!-- -------------------------------------------------------------------------------- -->
     <script>
-        (function(){
-            let lang = document.getElementById('js-lang-select'),
-                langChild = lang.getElementsByTagName('input'),
-                html = document.getElementsByTagName('html')[0];
-
-
-            lang.addEventListener('click', function(event){
-                /*
-                 *   Установка языкового атрибута
-                 *   Сохранение данных в localStorage
-                 **/
-                if(event.target.value == 'ru') {
-                    html.setAttribute('lang', 'en');
-                    localStorage.setItem('lang', 'en');
-                    langChild[0].value = 'en';
-                } else if(event.target.value == 'en') {
-                    html.setAttribute('lang', 'ru');
-                    localStorage.setItem('lang', 'ru');
-                    langChild[0].value = 'ru';
-                }
-            });
-
-            if (localStorage.getItem('lang')) {
-                /*
-                 *   Получение данных из localStorage и установка языкового атрибута
-                 **/
-                html.setAttribute('lang', localStorage.getItem('lang'));
-                langChild[0].value = localStorage.getItem('lang');
-
-                if(langChild[0].value == 'en') {
-                    langChild[0].checked = true;
-                } else {
-                    langChild[0].checked = false;
-                }
-            }
-        })();
         /*
         *   После загрузки всех всего DOM дерева со стилями, прелоадер скрывается
         **/

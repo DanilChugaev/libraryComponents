@@ -26,18 +26,26 @@ body {
 	background-repeat: repeat;
 	position: relative;
 }
+header	{
+	height:65px;
+	background: #58a;
+	color: #fff;
+	box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.6);
+}
 [data-lang="en"] {
-	display: block;
+	display: inline-block;
+	font-family: 'Indie Flower', 'Neucha', cursive;
 }
 [data-lang="ru"] {
 	display: none;
+	font-family: 'Indie Flower', 'Neucha', cursive;
 }
 html:lang(ru) {
 	[data-lang="en"] {
 		display: none;
 	}
 	[data-lang="ru"] {
-		display: block;
+		display: inline-block;
 	}
 }
 html:lang(en) {
@@ -45,7 +53,7 @@ html:lang(en) {
 		display: none;
 	}
 	[data-lang="en"] {
-		display: block;
+		display: inline-block;
 	}
 }
 .arrow-to-top {
@@ -137,6 +145,18 @@ html:lang(en) {
 	}
 }
 
+
+.container {
+	width:1300px;
+	margin: 0 auto;
+	padding: 20px 0;
+
+	ul {
+		li {
+			list-style: none;
+		}
+	}
+}
 
 
 /*

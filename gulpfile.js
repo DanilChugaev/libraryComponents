@@ -96,7 +96,7 @@ gulp.task('watch', ['browser-sync', 'scss', 'page__scss'], function() {
     gulp.watch('app/scss/page/*.scss', ['page__scss']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/scroll-to.js', browserSync.reload);
-    gulp.watch('app/js/custom/*.js', browserSync.reload);
+    gulp.watch('app/js/custom/**/*.js', browserSync.reload);
     gulp.watch('app/js/page/*.js', browserSync.reload);
 });
 

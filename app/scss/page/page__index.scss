@@ -10,7 +10,7 @@ header {
   background: #58a;
   color: #fff;
   * {
-    font-family: 'Indie Flower', 'Bad Script', cursive;
+    //font-family: 'Indie Flower', 'Bad Script', cursive;
     font-family: 'Indie Flower', 'Neucha', cursive;
   }
   [data-lang] {
@@ -23,8 +23,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
 
-  width:1300px;
-  margin: 0 auto;
+
   padding: 20px 0;
 
   li{
