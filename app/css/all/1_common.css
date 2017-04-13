@@ -5,6 +5,9 @@
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 @import url("https://fonts.googleapis.com/css?family=Bad+Script");
 @import url("https://fonts.googleapis.com/css?family=Neucha");
+:root {
+  --containerWidth: 1250px; }
+
 * {
   padding: 0;
   margin: 0;
@@ -25,19 +28,45 @@ body {
   position: relative; }
 
 header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 -webkit-calc( 50% - 1250px / 2);
+  padding: 0 calc( 50% - 1250px / 2);
+  padding: 0 -webkit-calc( 50% - var(--containerWidth, 1250px) / 2);
+  padding: 0 calc( 50% - var(--containerWidth, 1250px) / 2);
   height: 65px;
   background: #58a;
   color: #fff;
   -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.6);
           box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.6); }
+  header a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px; }
 
 [data-lang="en"] {
   display: inline-block;
   font-family: 'Indie Flower', 'Neucha', cursive; }
+  [data-lang="en"] q {
+    font-family: 'Indie Flower', 'Neucha', cursive;
+    quotes: "\201C" "\201D"; }
 
 [data-lang="ru"] {
   display: none;
   font-family: 'Indie Flower', 'Neucha', cursive; }
+  [data-lang="ru"] q {
+    font-family: 'Indie Flower', 'Neucha', cursive;
+    quotes: "\00AB" "\00BB"; }
 
 html:lang(ru) [data-lang="en"] {
   display: none; }
@@ -150,11 +179,24 @@ html:lang(en) [data-lang="en"] {
               transform: translateX(100%); }
 
 .container {
-  width: 1300px;
+  width: 1250px;
+  width: var(--containerWidth, 1250px);
   margin: 0 auto;
-  padding: 20px 0; }
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1); }
   .container ul li {
     list-style: none; }
+
+p,
+p b {
+  font-family: 'Indie Flower', 'Neucha', cursive;
+  padding: 10px 0;
+  font-size: 18px; }
+
+xmp {
+  font-family: Calibri;
+  border: 1px solid #ccc;
+  background-color: #fff; }
 
 /*
 header {

@@ -15,6 +15,7 @@ var gulp 			= require('gulp'),
     rename 			= require('gulp-rename'),
     concatCss 		= require('gulp-concat-css'),
     del 			= require('del'),
+    rigger          = require('gulp-rigger'),
     imagemin		= require('gulp-imagemin'),
     pngquant		= require('imagemin-pngquant');
     // если будет использоваться бутсрап, то для удаления ненужных стилей можно использовать плагин gulp-uncss
@@ -46,6 +47,14 @@ gulp.task('libs', function() {
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('app/js'));
+});
+
+gulp.task('html', function () {
+    return gulp.src('app/html/*.html')
+        // .pipe(changed('app/html/*.html'))
+        .pipe(rigger())
+        .pipe(gulp.dest('app/'))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('js-min', function() {
@@ -90,11 +99,15 @@ gulp.task('img', function() {
 	.pipe(gulp.dest('dist/image'));
 });
 
-gulp.task('watch', ['browser-sync', 'scss', 'page__scss'], function() {
+gulp.task('watch', ['browser-sync', 'scss', 'page__scss', 'html'], function() {
     gulp.watch('app/css/preloader.css', browserSync.reload);
     gulp.watch('app/scss/*.scss', ['scss']);
     gulp.watch('app/scss/page/*.scss', ['page__scss']);
-    gulp.watch('app/*.html', browserSync.reload);
+    // gulp.watch('app/*.html', browserSync.reload);
+    gulp.watch('app/html/*.html', ['html']);
+    gulp.watch('app/html/template/*.html', ['html']);
+    // gulp.watch('app/html/*.html', browserSync.reload);
+    // gulp.watch('app/html/template/*.html', browserSync.reload);
     gulp.watch('app/js/scroll-to.js', browserSync.reload);
     gulp.watch('app/js/custom/**/*.js', browserSync.reload);
     gulp.watch('app/js/page/*.js', browserSync.reload);

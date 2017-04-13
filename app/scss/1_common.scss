@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Neucha');
 
 :root {
-
+	--containerWidth: 1250px;
 }
 * {
   	padding: 0;
@@ -27,18 +27,37 @@ body {
 	position: relative;
 }
 header	{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 calc( 50% - 1250px / 2 );
+	padding: 0 calc( 50% - var(--containerWidth, 1250px) / 2 );
 	height:65px;
 	background: #58a;
 	color: #fff;
 	box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.6);
+	
+	a {
+		text-decoration: none;
+		color: #fff;
+		font-size: 25px;
+	}
 }
 [data-lang="en"] {
 	display: inline-block;
 	font-family: 'Indie Flower', 'Neucha', cursive;
+	q {
+		font-family: 'Indie Flower', 'Neucha', cursive;
+		quotes: "\201C" "\201D";
+	}
 }
 [data-lang="ru"] {
 	display: none;
 	font-family: 'Indie Flower', 'Neucha', cursive;
+	q{
+		font-family: 'Indie Flower', 'Neucha', cursive;
+		quotes: "\00AB" "\00BB";
+	}
 }
 html:lang(ru) {
 	[data-lang="en"] {
@@ -144,12 +163,12 @@ html:lang(en) {
 		}
 	}
 }
-
-
 .container {
-	width:1300px;
+	width: 1250px;
+	width: var(--containerWidth, 1250px);
 	margin: 0 auto;
-	padding: 20px 0;
+	padding: 20px;
+	background-color: rgba(0,0,0,0.1);
 
 	ul {
 		li {
@@ -157,7 +176,17 @@ html:lang(en) {
 		}
 	}
 }
-
+p,
+p b{
+	font-family: 'Indie Flower', 'Neucha', cursive;
+	padding: 10px 0;
+	font-size: 18px;
+}
+xmp	{
+	font-family: Calibri;
+	border:1px solid #ccc;
+	background-color: #fff;
+}
 
 /*
 header {

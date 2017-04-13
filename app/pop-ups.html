@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Pop-ups page</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main page</title>
-
+    
     <!--На страницах будут подключаться скрипты и стили относящиеся к данной странице-->
     <!--Также будут общие файлы-->
-
+    
     <!-- -------------------------------------------------------------------------------- -->
     <!--Здесь указываются фавиконы для различных устройств-->
     <link rel="shortcut icon" href="ico/favicon.png">
@@ -18,7 +19,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="64x64" href="ico/64-64.png">
     <link rel="apple-touch-icon-precomposed" href="ico/favicon.png">
     <!-- -------------------------------------------------------------------------------- -->
-
+    
     <!--Стили для прелоадера, он необходим чтобы пользователь не видел "голый" текст без стилей-->
     <link rel="stylesheet" href="css/preloader.css">
 </head>
@@ -35,8 +36,8 @@
         })();
     </script>
     <!-- -------------------------------------------------------------------------------- -->
-
-    <header>
+    
+    <header id="top">
         <div class="lang-select">
             <label id="js-lang-select" class="lang-select__label">
                 <span class="lang-select__text">Rus</span>
@@ -44,10 +45,15 @@
                 <span class="lang-select__text">Eng</span>
             </label>
         </div>
+    
+        <a href="index.html" data-lang="ru">Библиотека компонентов</a>
+        <a href="index.html" data-lang="en">Component library</a>
     </header>
 
     <main>
         <section class="container">
+            <p data-lang="ru">Примеры:</p>
+            <p data-lang="en">Examples:</p>
             <ul>
                 <li>
                     <a href="#privacyPolicy" class="open-modal">
@@ -74,15 +80,62 @@
                     </a>
                 </li>
             </ul>
+        </section>
 
+        <section class="container">
+            <p data-lang="ru">Ссылка на модальное окно создается следующим образом:</p>
+            <p data-lang="en">A link to the fashion window is created as follows:</p>
+            <xmp>
+                <a href="#privacyPolicy" class="open-modal">
+                    <span data-lang="ru">Политика конфиденциальности</span>
+                    <span data-lang="en">Privacy policy</span>
+                </a>
+            </xmp>
+            <p data-lang="ru">
+                -В атрибуте <b><q>href</q></b> указывается <b>id</b> модального окна <br>
+                -Для ссылок обязательный класс <b><q>open-modal</q></b> <br>
+                -Внутри ссылки указывается текст (если сайт мультиязычный,
+                        то используется элемент <b>span</b> c атрибутом <b>data-lang=<q>ru</q></b>
+                        и <b>data-lang=<q>en</q></b>,
+                        в зависимости от языков на сайте)
+            </p>
+            <p data-lang="en">
+                -The <b><q>href</q></b> attribute specifies the <b>id</b> of the modal window <br>
+                -For references, a compulsory class <b><q>open-modal</q></b> <br>
+                -Inside the link, the text is specified (if the site is multilanguage,
+                        then a span element is used with the attribute <b>data-lang=<q>ru</q></b>
+                        and <b>data-lang=<q>en</q></b>,
+                        depending on the languages on the site)
+            </p>
+            <p data-lang="ru">Само модальное окно определяется в самом конце страницы следующим образом:</p>
+            <p data-lang="en">The modal window itself is defined at the very end of the page as follows:</p>
+            <xmp>
+                <div id="privacyPolicy" class="modal">
+                    <div class="modal__body">
+                        <span class="modal__close">&times;</span>
+                        <div class="modal__content">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </xmp>
+            <p data-lang="ru">
+                -Для модальных окон обязательный класс <b><q>modal</q></b> <br>
+                -Тело модального окна необходимо определять классом <b><q>modal__body</q></b> <br>
+                -Крестик, который закрывает окно, определяется классом <b><q>modal__close</q></b>
+                    (также окно можно закрыть нажав клавишу <b>Esc</b> или по области вне модального окна) <br>
+                -Весь основной контент находится в блоке с классом <b><q>modal__content</q></b>
+            </p>
+            <p data-lang="en">
+                -For modal windows, the required class <b><q>modal</q></b> <br>
+                -The modal window's body must be defined by the <b><q>modal__body</q></b> class <br>
+                -The shortcut that closes the window is defined by the <b><q>modal__close</q></b> class
+                (You can also close the window by pressing the <b>Esc</b> key or the area outside the modal window)<br>
+                -The whole main content is in the block with the class <b><q>modal__content</q></b>
+            </p>
         </section>
 
     </main>
-
-    <!-- -------------------------------------------------------------------------------- -->
-    <!-- Стрелка возврата к шапке страницы -->
-    <a href="#top" id="arrow-to-top" class="arrow-to-top scrolled"></a>
-    <!-- -------------------------------------------------------------------------------- -->
 
     <!-- -------------------------------------------------------------------------------- -->
     <!--
@@ -374,11 +427,14 @@
     <link rel="stylesheet" href="css/page/page__pop-ups.css">
 
     <script src="js/custom/modal.js" defer></script>
-
-    <script src="js/custom/lang-select.js"></script>
     <!-- -------------------------------------------------------------------------------- -->
 
-
+    <!-- -------------------------------------------------------------------------------- -->
+    <!-- Стрелка возврата к шапке страницы -->
+    <a href="#top" id="arrow-to-top" class="arrow-to-top scrolled"></a>
+    <!-- -------------------------------------------------------------------------------- -->
+    <script src="js/custom/scroll-to.js" defer></script>
+    <script src="js/custom/lang-select.js"></script>
     <!-- -------------------------------------------------------------------------------- -->
     <script>
         /*
@@ -387,7 +443,7 @@
         (function(){
             document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById('loader').classList.add('animation');
-
+    
                 setTimeout(function () {
                     document.getElementById('loader').style.display = "none";
                 }, 300);

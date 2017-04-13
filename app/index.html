@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Main page</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main page</title>
-
+    
     <!--На страницах будут подключаться скрипты и стили относящиеся к данной странице-->
     <!--Также будут общие файлы-->
-
+    
     <!-- -------------------------------------------------------------------------------- -->
     <!--Здесь указываются фавиконы для различных устройств-->
     <link rel="shortcut icon" href="ico/favicon.png">
@@ -18,7 +19,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="64x64" href="ico/64-64.png">
     <link rel="apple-touch-icon-precomposed" href="ico/favicon.png">
     <!-- -------------------------------------------------------------------------------- -->
-
+    
     <!--Стили для прелоадера, он необходим чтобы пользователь не видел "голый" текст без стилей-->
     <link rel="stylesheet" href="css/preloader.css">
 </head>
@@ -35,7 +36,7 @@
         })();
     </script>
     <!-- -------------------------------------------------------------------------------- -->
-
+    
     <header id="top">
         <div class="lang-select">
             <label id="js-lang-select" class="lang-select__label">
@@ -44,9 +45,9 @@
                 <span class="lang-select__text">Eng</span>
             </label>
         </div>
-
-        <span data-lang="ru">Библиотека компонентов</span>
-        <span data-lang="en">Component library</span>
+    
+        <a href="index.html" data-lang="ru">Библиотека компонентов</a>
+        <a href="index.html" data-lang="en">Component library</a>
     </header>
 
     <main>
@@ -70,36 +71,27 @@
         </ul>
     </main>
 
-    <!--<footer>-->
-        <!--футер-->
-    <!--</footer>-->
+    <!-- -------------------------------------------------------------------------------- -->
+    <!--Область с подключаемыми файлами-->
+    <link rel="stylesheet" href="css/all/1_common.css">
+    <link rel="stylesheet" href="css/page/page__index.css">
+    <!-- -------------------------------------------------------------------------------- -->
 
     <!-- -------------------------------------------------------------------------------- -->
     <!-- Стрелка возврата к шапке страницы -->
     <a href="#top" id="arrow-to-top" class="arrow-to-top scrolled"></a>
     <!-- -------------------------------------------------------------------------------- -->
-
-    <!-- -------------------------------------------------------------------------------- -->
-    <!--Область с подключаемыми файлами-->
-    <link rel="stylesheet" href="css/all/1_common.css">
-    <link rel="stylesheet" href="css/page/page__index.css">
-
-    <script src="js/page/page__index.js" defer></script>
     <script src="js/custom/scroll-to.js" defer></script>
-
     <script src="js/custom/lang-select.js"></script>
-    <!-- -------------------------------------------------------------------------------- -->
-
-
     <!-- -------------------------------------------------------------------------------- -->
     <script>
         /*
-        *   После загрузки всех всего DOM дерева со стилями, прелоадер скрывается
-        **/
+         *   После загрузки всех всего DOM дерева со стилями, прелоадер скрывается
+         **/
         (function(){
             document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById('loader').classList.add('animation');
-
+    
                 setTimeout(function () {
                     document.getElementById('loader').style.display = "none";
                 }, 300);

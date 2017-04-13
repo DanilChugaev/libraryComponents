@@ -22,7 +22,7 @@
 
     if (localStorage.getItem('lang')) {
         /*
-         *   Получение данных из localStorage и установка языкового атрибута
+         *   Получение данных из localStorage и установка языкового атрибута при обновлении/загрузке страницы
          **/
         html.setAttribute('lang', localStorage.getItem('lang'));
         langChild[0].value = localStorage.getItem('lang');
