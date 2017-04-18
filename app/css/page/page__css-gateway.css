@@ -1,0 +1,36 @@
+.container__gateway {
+  position: relative; }
+  .container__gateway label {
+    position: absolute; }
+
+.graph {
+  position: relative;
+  width: 50%; }
+  .graph input {
+    width: 60px;
+    height: 25px; }
+  .graph img {
+    margin-left: 140px;
+    margin-bottom: 40px; }
+  .graph__maxSize {
+    top: 104px;
+    left: 0; }
+  .graph__minSize {
+    top: 245px;
+    left: 0; }
+  .graph__minWidth {
+    bottom: 0px;
+    left: 175px; }
+  .graph__maxWidth {
+    bottom: 0px;
+    left: 445px; }
+
+#output {
+  position: absolute;
+  width: 400px;
+  height: 80%;
+  top: 20px;
+  right: 10px; }
+  #output textarea {
+    width: 380px;
+    z-index: 99; }

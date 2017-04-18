@@ -1,0 +1,50 @@
+.container {
+  &__gateway {
+    position: relative;
+    label {
+      position: absolute;
+    }
+  }
+}
+.graph {
+  position: relative;
+  input {
+    width:60px;
+    height:25px;
+  }
+  img {
+    margin-left: 140px;
+    margin-bottom: 40px;
+  }
+    width:50%;
+
+  &__maxSize {
+    top: 104px;
+    left: 0;
+  }
+  &__minSize {
+    top: 245px;
+    left: 0;
+  }
+  &__minWidth {
+    bottom: 0px;
+    left: 175px;
+  }
+  &__maxWidth {
+    bottom: 0px;
+    left: 445px;
+  }
+}
+
+#output {
+  position: absolute;
+  width:400px;
+  height:80%;
+  top:20px;
+  right:10px;
+
+  textarea  {
+    width:380px;
+    z-index: 99;
+  }
+}

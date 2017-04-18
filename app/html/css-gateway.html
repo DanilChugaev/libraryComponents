@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS-gateway page</title>
+
+    //= template/heads-link.html
+</head>
+<body>
+    //= template/header.html
+
+    <main>
+        <section class="container container__gateway">
+
+
+
+            <button id="result">result</button>
+            <div id="output">
+                <textarea name="" id="output-text" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="graph">
+                <ul>
+                    <li>
+                        <label class="graph__maxSize">
+                            <span>maxSize</span>
+                            <input type="number" id="maxSize" value="30">
+                        </label>
+                        <label class="graph__minSize">
+                            <span>minSize</span>
+                            <input type="number" id="minSize" value="20">
+                        </label>
+                        <img src="image/graph-gateway.png" alt="">
+                    </li>
+                    <li>
+                        <label class="graph__minWidth">
+                            <span>minWidth</span>
+                            <input type="number" id="minWidth" value="1020">
+                        </label>
+
+                        <label class="graph__maxWidth">
+                            <span>maxWidth</span>
+                            <input type="number" id="maxWidth" value="1920">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- -------------------------------------------------------------------------------- -->
+    <!--Область с подключаемыми файлами-->
+    <link rel="stylesheet" href="css/all/1_common.css">
+    <link rel="stylesheet" href="css/page/page__css-gateway.css">
+
+    <script src="js/custom/css-gateway.js"></script>
+    <!-- -------------------------------------------------------------------------------- -->
+
+    //= template/footer.html
+</body>
+</html>
