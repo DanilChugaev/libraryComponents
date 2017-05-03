@@ -176,8 +176,13 @@ html:lang(en) {
 		}
 	}
 }
+p {
+	display: block;
+	width:100%;
+}
 p,
-p b{
+p b,
+p a {
 	font-family: 'Indie Flower', 'Neucha', cursive;
 	padding: 10px 0;
 	font-size: 18px;
